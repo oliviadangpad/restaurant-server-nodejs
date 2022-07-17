@@ -25,8 +25,19 @@ GraphQL setup:
 - `yarn dev` to run server with nodemon.
 - If want to use same `dev` script as in howtographql to start the web server and watch for any changes:
   - Add this to package.json scripts:
+
     ```bash
     "dev": "ts-node-dev --transpile-only --no-notify --exit-child src/index.ts",
     ```
+
   - Yarn install ts-node-dev
   - Then run server with the new `yarn dev`
+
+### Prisma
+
+After changing schema.prisma, we need to create migration to change our database by running:
+
+```bash
+prisma migrate dev --name <migration-message>
+# e.g: prisma migrate dev --name added_job_title
+```

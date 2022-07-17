@@ -3,11 +3,16 @@
 
 
 type Item {
-  category_id: Int!
-  description: String!
+  categoryId: Int!
+  description: String
   id: Int!
-  image_url: String!
+  imageUrl: String!
   name: String!
+  priceInCents: Int!
+}
+
+type Mutation {
+  post(categoryId: Int!, description: String, imageUrl: String!, name: String!, priceInCents: Int!): Item!
 }
 
 type Query {

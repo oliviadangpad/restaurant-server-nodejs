@@ -29,12 +29,14 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Item: { // root type
-    category_id: number; // Int!
-    description: string; // String!
+    categoryId: number; // Int!
+    description?: string | null; // String
     id: number; // Int!
-    image_url: string; // String!
+    imageUrl: string; // String!
     name: string; // String!
+    priceInCents: number; // Int!
   }
+  Mutation: {};
   Query: {};
 }
 
@@ -50,11 +52,15 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Item: { // field return type
-    category_id: number; // Int!
-    description: string; // String!
+    categoryId: number; // Int!
+    description: string | null; // String
     id: number; // Int!
-    image_url: string; // String!
+    imageUrl: string; // String!
     name: string; // String!
+    priceInCents: number; // Int!
+  }
+  Mutation: { // field return type
+    post: NexusGenRootTypes['Item']; // Item!
   }
   Query: { // field return type
     feed: NexusGenRootTypes['Item'][]; // [Item!]!
@@ -63,11 +69,15 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   Item: { // field return type name
-    category_id: 'Int'
+    categoryId: 'Int'
     description: 'String'
     id: 'Int'
-    image_url: 'String'
+    imageUrl: 'String'
     name: 'String'
+    priceInCents: 'Int'
+  }
+  Mutation: { // field return type name
+    post: 'Item'
   }
   Query: { // field return type name
     feed: 'Item'
@@ -75,6 +85,15 @@ export interface NexusGenFieldTypeNames {
 }
 
 export interface NexusGenArgTypes {
+  Mutation: {
+    post: { // args
+      categoryId: number; // Int!
+      description?: string | null; // String
+      imageUrl: string; // String!
+      name: string; // String!
+      priceInCents: number; // Int!
+    }
+  }
 }
 
 export interface NexusGenAbstractTypeMembers {
