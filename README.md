@@ -38,6 +38,6 @@ GraphQL setup:
 After changing schema.prisma, we need to create migration to change our database by running:
 
 ```bash
-prisma migrate dev --name <migration-message>
-# e.g: prisma migrate dev --name added_job_title
+npx prisma migrate dev --name <migration-message>
+# e.g: npx prisma migrate dev --name added_job_title
 ```

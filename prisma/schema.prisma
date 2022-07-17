@@ -11,11 +11,11 @@ datasource db {
 }
 
 model items {
-  	id          Int      @id @default(autoincrement())
-	  createdAt   DateTime @default(now())
-	  name        String
-	  description String
-    imageUrl    String
-    categoryId  Int
-    priceInCents  Int
+  id              Int      @id @default(autoincrement())
+	created_at      DateTime @default(now())
+	name            String
+	description     String?
+  image_url       String?
+  category_id     Int
+  price_in_cents  Int
 }

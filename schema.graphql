@@ -3,12 +3,12 @@
 
 
 type Item {
-  categoryId: Int!
+  category_id: Int!
   description: String
   id: Int!
-  imageUrl: String!
+  image_url: String
   name: String!
-  priceInCents: Int!
+  price_in_cents: Int!
 }
 
 type Mutation {

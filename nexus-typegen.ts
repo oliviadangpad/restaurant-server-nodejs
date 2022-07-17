@@ -4,7 +4,7 @@
  */
 
 
-
+import type { Context } from "./src/context"
 
 
 
@@ -29,12 +29,12 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Item: { // root type
-    categoryId: number; // Int!
+    category_id: number; // Int!
     description?: string | null; // String
     id: number; // Int!
-    imageUrl: string; // String!
+    image_url?: string | null; // String
     name: string; // String!
-    priceInCents: number; // Int!
+    price_in_cents: number; // Int!
   }
   Mutation: {};
   Query: {};
@@ -52,12 +52,12 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Item: { // field return type
-    categoryId: number; // Int!
+    category_id: number; // Int!
     description: string | null; // String
     id: number; // Int!
-    imageUrl: string; // String!
+    image_url: string | null; // String
     name: string; // String!
-    priceInCents: number; // Int!
+    price_in_cents: number; // Int!
   }
   Mutation: { // field return type
     post: NexusGenRootTypes['Item']; // Item!
@@ -69,12 +69,12 @@ export interface NexusGenFieldTypes {
 
 export interface NexusGenFieldTypeNames {
   Item: { // field return type name
-    categoryId: 'Int'
+    category_id: 'Int'
     description: 'String'
     id: 'Int'
-    imageUrl: 'String'
+    image_url: 'String'
     name: 'String'
-    priceInCents: 'Int'
+    price_in_cents: 'Int'
   }
   Mutation: { // field return type name
     post: 'Item'
@@ -127,7 +127,7 @@ export type NexusGenFeaturesConfig = {
 }
 
 export interface NexusGenTypes {
-  context: any;
+  context: Context;
   inputTypes: NexusGenInputs;
   rootTypes: NexusGenRootTypes;
   inputTypeShapes: NexusGenInputs & NexusGenEnums & NexusGenScalars;

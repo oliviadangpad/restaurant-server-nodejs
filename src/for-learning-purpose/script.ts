@@ -1,7 +1,10 @@
-// 1
+/**
+ * This file is only to run pre-database connection
+ * TO-DO: remove this file later
+ */
+
 import { PrismaClient } from '@prisma/client'
 
-// 2
 const prisma = new PrismaClient()
 
 // Define an async function called main to send queries to the database.
@@ -11,9 +14,9 @@ async function main(): Promise<void> {
     data: {
       name: 'script',
       description: 'created from script',
-      imageUrl: 'some.com',
-      categoryId: 2,
-      priceInCents: 20,
+      image_url: 'some.com',
+      category_id: 2,
+      price_in_cents: 20,
     },
   })
   console.log(`Created item: ${newItem}`)
