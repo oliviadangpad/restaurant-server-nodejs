@@ -29,15 +29,22 @@ export interface NexusGenScalars {
 
 export interface NexusGenObjects {
   Item: { // root type
-    category_id: number; // Int!
+    categoryId: number; // Int!
     description?: string | null; // String
     id: number; // Int!
-    image_url?: string | null; // String
+    imageUrl?: string | null; // String
     name: string; // String!
-    price_in_cents: number; // Int!
+    priceInCents: number; // Int!
   }
   Mutation: {};
   Query: {};
+  User: { // root type
+    email: string; // String!
+    firstName?: string | null; // String
+    id: number; // Int!
+    lastName?: string | null; // String
+    role: string; // String!
+  }
 }
 
 export interface NexusGenInterfaces {
@@ -52,12 +59,13 @@ export type NexusGenAllTypes = NexusGenRootTypes & NexusGenScalars
 
 export interface NexusGenFieldTypes {
   Item: { // field return type
-    category_id: number; // Int!
+    categoryId: number; // Int!
     description: string | null; // String
     id: number; // Int!
-    image_url: string | null; // String
+    imageUrl: string | null; // String
     name: string; // String!
-    price_in_cents: number; // Int!
+    postedBy: NexusGenRootTypes['User'] | null; // User
+    priceInCents: number; // Int!
   }
   Mutation: { // field return type
     post: NexusGenRootTypes['Item']; // Item!
@@ -65,22 +73,39 @@ export interface NexusGenFieldTypes {
   Query: { // field return type
     feed: NexusGenRootTypes['Item'][]; // [Item!]!
   }
+  User: { // field return type
+    email: string; // String!
+    firstName: string | null; // String
+    id: number; // Int!
+    items: NexusGenRootTypes['Item'][]; // [Item!]!
+    lastName: string | null; // String
+    role: string; // String!
+  }
 }
 
 export interface NexusGenFieldTypeNames {
   Item: { // field return type name
-    category_id: 'Int'
+    categoryId: 'Int'
     description: 'String'
     id: 'Int'
-    image_url: 'String'
+    imageUrl: 'String'
     name: 'String'
-    price_in_cents: 'Int'
+    postedBy: 'User'
+    priceInCents: 'Int'
   }
   Mutation: { // field return type name
     post: 'Item'
   }
   Query: { // field return type name
     feed: 'Item'
+  }
+  User: { // field return type name
+    email: 'String'
+    firstName: 'String'
+    id: 'Int'
+    items: 'Item'
+    lastName: 'String'
+    role: 'String'
   }
 }
 

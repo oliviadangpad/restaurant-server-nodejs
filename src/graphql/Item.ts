@@ -6,9 +6,21 @@ export const Item = objectType({
     t.nonNull.int('id')
     t.string('description')
     t.nonNull.string('name')
-    t.string('image_url')
-    t.nonNull.int('category_id')
-    t.nonNull.int('price_in_cents')
+    t.string('imageUrl')
+    t.nonNull.int('categoryId')
+    t.nonNull.int('priceInCents')
+    t.field('postedBy', {
+      type: 'User',
+      resolve(parent, args, context) {
+        return context.prisma.item
+          .findUnique({
+            where: {
+              id: parent.id,
+            },
+          })
+          .postedBy()
+      },
+    })
   },
 })
 
@@ -17,7 +29,7 @@ export const ItemQuery = extendType({
   definition(t) {
     t.nonNull.list.nonNull.field('feed', {
       type: 'Item',
-      resolve(parent, args, context, info) {
+      resolve(parent, args, context, _info) {
         return context.prisma.items.findMany()
       },
     })
@@ -42,9 +54,9 @@ export const ItemMutation = extendType({
           data: {
             name,
             description,
-            image_url: imageUrl,
-            category_id: categoryId,
-            price_in_cents: priceInCents,
+            imageUrl,
+            categoryId,
+            priceInCents,
           },
         })
         return newItem
